@@ -14,6 +14,7 @@ import re
 # 匹配html文档中的所有标签，用于保留文本,同时保留img标签（保存图片）                                    #不除去img标签      ----去除i标签----
 PATT_DEL_HTML_TAG = re.compile(r"(<style>[\s\S]+?</style>)|(<script[\s\S]*?>[\s\S]+?</script>)|(<[^i]+?.*? *.*?>)|(<i .+?>)|(</*i>)")
 
+PATT_IMG_EXTRACT = re.compile(r"<img .+? src=(\".+?\") .+?>")
 # 要爬取的新闻分类地址
 url_list = {'国内': ['https://temp.163.com/special/00804KVA/cm_guonei.js?callback=data_callback',
                    'https://temp.163.com/special/00804KVA/cm_guonei_0{}.js?callback=data_callback'],
