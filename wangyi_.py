@@ -8,6 +8,11 @@ import datetime
 import time
 from tqdm import tqdm
 import traceback
+from bs4 import BeautifulSoup
+import re
+
+# 匹配html文档中的所有标签，用于保留文本,同时保留img标签（保存图片）                                    #不除去img标签      ----去除i标签----
+PATT_DEL_HTML_TAG = re.compile(r"(<style>[\s\S]+?</style>)|(<script[\s\S]*?>[\s\S]+?</script>)|(<[^i]+?.*? *.*?>)|(<i .+?>)|(</*i>)")
 
 # 要爬取的新闻分类地址
 url_list = {'国内': ['https://temp.163.com/special/00804KVA/cm_guonei.js?callback=data_callback',
@@ -107,11 +112,23 @@ def spider_category_data():
         with open(os.path.abspath(os.path.join(Path(__file__).parent, "wangyi_data", "category_url_data", f"{name}-{datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')}.json")), "w", encoding='utf-8') as f:
             json.dump(doc_urls, f, ensure_ascii = False)
 
-def deal_article_url_data(url: str):
-    pass
+def deal_article_url_data(url: str = "https://www.163.com/money/article/GDLU786L00258105.html"):
+    content: str = get_url_data(url)
+    soup = BeautifulSoup(content, 'lxml')
+    # 获取文章主体节点 <div class = "post_body">....</div>
+    ariticle_content_html = soup.select(".post_body")[0]
+    ariticle_content_contain_imgTag = PATT_DEL_HTML_TAG.sub("", str(ariticle_content_html))
 
+
+    ariticle_content = re.sub(r"[ ]+", " ", ariticle_content)   #将大段的空格字符 替换成当个空格
+    ariticle_content = re.sub(r"[\n]+", "\n", ariticle_content)   #将大段的换行字符 替换成换行
+
+    return ariticle_content
 
 if __name__ == "__main__":
-    spider_category_data()
+    # 获取url
+    # spider_category_data()
+    deal_article_url_data()
+
 
 
