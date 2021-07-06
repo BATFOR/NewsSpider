@@ -68,3 +68,16 @@ url_list={'国内':[ 'https://temp.163.com/special/00804KVA/cm_guonei.js?callbac
 	https://ent.163.com/special/000380VU/newsdata_index_0{}.js?callback=data_callback
 艺术：https://art.163.com/special/00999815/art_redian_api.js?callback=data_callback
 	https://art.163.com/special/00999815/art_redian_api_0{}.js?callback=data_callback
+
+
+中国共产党新闻网：
+党建要闻：http://dangjian.people.com.cn/GB/394443/index.html
+组织人事：http://renshi.people.com.cn/
+反腐倡廉：http://fanfu.people.com.cn/
+综合报道：http://cpc.people.com.cn/GB/64093/64387/index.html
+视频报道：http://cpc.people.com.cn/shipin/
+高层动态：http://cpc.people.com.cn/GB/64093/64094/index.html
+党建论坛：http://dangjian.people.com.cn/GB/132289/index.html
+先锋人物：http://dangjian.people.com.cn/GB/78694/index.html
+评论观点：http://dangjian.people.com.cn/GB/394444/index.html
+基层党建：http://dangjian.people.com.cn/GB/437264/index.html
